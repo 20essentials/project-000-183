@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title or "Arrow Down" }}</title>
+  <meta name="google" content="notranslate" />
+  <link rel="shortcut icon" href="{{ favicon or "assets/favicon.webp" }}" type="image/x-icon" />
+  <style>
+    *,
+    *::after,
+    *::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: white transparent;
+    }
+
+    body {
+      height: 100dvh;
+      display: flex;
+      flex-wrap: wrap;
+      place-content: center;
+      background-color: #000;
+    }
+
+    .container {
+      width: 82px;
+      height: 82px;
+      position: relative;
+      top: -70px;
+    }
+
+    .square {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: calc(var(--d) * 40px);
+      border: 5px solid currentColor;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: arrowMove 1s linear infinite;
+      animation-delay: calc((var(--d)) * 0.1s);
+    }
+
+    @keyframes arrowMove {
+      0% {
+        color: #fff;
+        transform: translate(0, 0) rotate(45deg);
+      }
+
+      20% {
+        color: #fff;
+        transform: translate(0, 15px) rotate(45deg);
+      }
+
+      20.1%,
+      100% {
+        color: #666;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="square" style="--d:0"></div>
+    <div class="square" style="--d:1"></div>
+    <div class="square" style="--d:2"></div>
+    <div class="square" style="--d:3"></div>
+  </div>
+</body>
+
+</html>
